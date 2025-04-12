@@ -16,18 +16,22 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $userId = $request->query('user_id');
-        
         $query = Post::query();
+    
+        // Filter by user_id if provided
+        if ($request->has('user_id')) {
+            $query->where('user_id', $request->input('user_id'));
+        }
         
-        if ($userId) {
-            $query->where('user_id', $userId);
+        // Filter by date if provided
+        if ($request->has('date')) {
+            $date = $request->input('date');
+            $query->whereDate('created_at', $date);
         }
         
         // Sort by date (newest first)
         $query->latest();
         
-        // Apply pagination
         $posts = $query->paginate(10);
         
         return response()->json($posts);
