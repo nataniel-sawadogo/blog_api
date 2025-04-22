@@ -45,14 +45,10 @@ php artisan serve
 
 ### Users
 - `GET /api/users` - Get all users
-- `GET /api/users/{id}` - Get user by ID
-- `PUT /api/users/{id}` - Update user
-- `DELETE /api/users/{id}` - Delete user
 
 ### Posts
-- `GET /api/posts` - Get all posts (or posts for a specific user with ?user_id=X)
+- `GET /api/posts` - Get all posts (or posts for a specific user with ?user_id=X, specific date with ?date=X)
 - `POST /api/posts` - Create a new post
-- `GET /api/posts/{id}` - Get post by ID
 - `PUT /api/posts/{id}` - Update post
 - `DELETE /api/posts/{id}` - Delete post
 
